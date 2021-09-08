@@ -1,6 +1,5 @@
 class CourtsController < ApplicationController
-  before_action :set_court, only: [:edit, :show]
-  before_action :find_court, only: [:destroy, :update]
+  before_action :set_court, only: [:edit, :show, :update]
   before_action :move_to_index, except: [:index, :show, :search]
 
   def index
@@ -21,6 +20,7 @@ class CourtsController < ApplicationController
   end
 
   def destroy
+    court = Court.find(params[:id])
     court.destroy
   end
 
@@ -28,7 +28,12 @@ class CourtsController < ApplicationController
   end
 
   def update
-    court.update(court_params)
+    @court.update(court_params)
+    if @court.save
+      render :update
+    else
+      render :edit
+    end
   end
 
   def show
@@ -48,10 +53,6 @@ class CourtsController < ApplicationController
   
   def set_court
     @court = Court.find(params[:id])
-  end
-
-  def find_court
-    court = Court.find(params[:id])
   end
 
   def move_to_index
