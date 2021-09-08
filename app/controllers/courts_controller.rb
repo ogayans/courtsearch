@@ -12,7 +12,12 @@ class CourtsController < ApplicationController
   end
 
   def create
-    Court.create(court_params)
+    @court = Court.new(court_params)
+    if @court.save
+      render :create
+    else
+      render :new
+    end
   end
 
   def destroy
