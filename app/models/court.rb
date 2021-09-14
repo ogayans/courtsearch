@@ -1,4 +1,9 @@
 class Court < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :number
+  belongs_to :prefecture
+
   validates :text, :image, presence: true
   belongs_to :user
   has_many :comments
