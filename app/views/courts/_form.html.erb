@@ -1,6 +1,11 @@
 <%= form_with(model: court, local: true) do |f| %>
   <%= render 'shared/error_messages', model: f.object %>
     <%= f.text_field :image, placeholder: "画像のURL" %>
-    <%= f.text_area :text, placeholder: "名称（場所の名前）", rows: "1" %>
+    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefecture-select"}) %>
+    <%= f.text_field :local, placeholder: "市区町村" %>
+    <%= f.text_field :address, placeholder: "番地以降（任意）" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"category-select"}) %>
+    <%= f.collection_select(:number_id, Number.all, :id, :name, {}, {class:"number-select"}) %>
+    <%= f.text_area :text, placeholder: "名称（任意）", rows: "1" %>
     <%= f.submit "SEND" %>
 <% end %>
