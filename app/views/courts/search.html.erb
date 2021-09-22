@@ -1,4 +1,4 @@
-<h1>
+<h1 class="searchresults">
   検索結果
 </h1>
 <% if @results.length !=0 %>
@@ -8,7 +8,9 @@
   <% end %>
 </div>
 <% else %>
-  該当する商品はありません
+  <div class="searchback">該当する場所はありません</div>
 <% end %>
 <br>
-<%= link_to 'トップページへ戻る', root_path %>
+<div class="nav-item active">
+<%= link_to 'トップページへ戻る', root_path, class: "nav-link" %>
+</div>
