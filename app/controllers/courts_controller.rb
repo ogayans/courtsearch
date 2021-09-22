@@ -1,9 +1,11 @@
 class CourtsController < ApplicationController
   before_action :set_court, only: [:edit, :show, :update]
   before_action :move_to_index, except: [:index, :show, :search]
+  before_action :search_court, only: [:index, :search]
 
   def index
     @courts = Court.includes(:user).order("created_at DESC")
+    set_court_column
   end
 
   def new
@@ -42,7 +44,7 @@ class CourtsController < ApplicationController
   end
 
   def search
-    @courts = Court.search(params[:keyword])
+    @results = @p.result
   end
 
   private
@@ -59,6 +61,19 @@ class CourtsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def search_court
+    @p = Court.ransack(params[:q])
+  end
+
+  def set_court_column
+    @court_text = Court.select("text").distinct
+    @court_prefecture_id = Court.select("prefecture_id").distinct
+    @court_local = Court.select("local").distinct
+    @court_address = Court.select("address").distinct
+    @court_category_id = Court.select("category_id").distinct
+    @court_number_id = Court.select("number_id").distinct
   end
 
 end

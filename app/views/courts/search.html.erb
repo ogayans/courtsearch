@@ -1,9 +1,14 @@
-<%= form_with(url: search_courts_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
-<% end %>
-<div class="contents row">
-  <% @courts.each do |court| %>
+<h1>
+  検索結果
+</h1>
+<% if @results.length !=0 %>
+  <div class="contents row">
+  <% @results.each do |court| %>
     <%= render partial: "court", locals: { court: court } %>
   <% end %>
 </div>
+<% else %>
+  該当する商品はありません
+<% end %>
+<br>
+<%= link_to 'トップページへ戻る', root_path %>

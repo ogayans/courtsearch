@@ -1,6 +1,23 @@
-<%= form_with(url: search_courts_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
+<%= search_form_for @p, url: search_courts_path do |f| %>
+  <%= f.label :text_eq, '名称' %>
+  <%= f.collection_select :text_eq, @court_text, :text, :text,  include_blank: '指定なし' %>
+  <br>
+  <%= f.label '都道府県' %>
+  <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name,  include_blank: '指定なし' %>
+  <br>
+  <%= f.label :local_eq, '市区町村' %>
+  <%= f.collection_select :local_eq, @court_local, :local, :local,  include_blank: '指定なし' %>
+  <br>
+  <%= f.label :address_eq, '番地以降' %>
+  <%= f.collection_select :address_eq, @court_address, :address, :address,  include_blank: '指定なし' %>
+  <br>
+  <%= f.label 'カテゴリー' %>
+  <%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし' %>
+  <br>
+  <%= f.label 'リングの数' %>
+  <%= f.collection_select :number_id_eq, Number.all, :id, :name,  include_blank: '指定なし' %>
+  <br>
+  <%= f.submit '検索' %>
 <% end %>
 <div class="contents row">
   <% @courts.each do |court| %>
