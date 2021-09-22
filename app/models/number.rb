@@ -3,9 +3,9 @@ class Number < ActiveHash::Base
     { id: 1, name: '--' },
     { id: 2, name: '1つ' },
     { id: 3, name: '2つ' },
-    { id: 1, name: '3つ' },
-    { id: 2, name: '4つ' },
-    { id: 3, name: '5つ以上' }
+    { id: 4, name: '3つ' },
+    { id: 5, name: '4つ' },
+    { id: 6, name: '5つ以上' }
   ]
 
   include ActiveHash::Associations
