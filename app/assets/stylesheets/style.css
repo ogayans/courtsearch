@@ -659,6 +659,7 @@ body {
   color: #666;
   font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
   margin: 0;
+  display: flex;
 }
 
 a {
@@ -863,7 +864,7 @@ div.contents.row div.content_post {
   margin: 20px 0;
   padding: 30px;
   position: relative;
-  height: 400px;
+  height: 200px;
   color: #fff;
   background-size: cover;
   background-position: center center;
@@ -1046,15 +1047,14 @@ footer p {
 }
 
 .search-form {
-  text-align: center;
   padding-top: 32px;
+  width: 30%;
 }
 
 .search-form .search-input {
-  width: 30%;
-  margin-right: 10px;
+  width: 60%;
 }
 
 .search-form .search-btn {
-  width: 10%;
+  width: 20%;
 }
