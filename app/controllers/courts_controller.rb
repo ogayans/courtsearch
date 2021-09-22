@@ -50,7 +50,7 @@ class CourtsController < ApplicationController
   private
 
   def court_params
-    params.require(:court).permit(:image, :text).merge(user_id: current_user.id)
+    params.require(:court).permit(:image, :text,:category_id,:number_id,:local,:prefecture_id,:address).merge(user_id: current_user.id)
   end
   
   def set_court
